@@ -20,3 +20,12 @@ Untuk mengompilasi naskah menjadi PDF:
 ./build.sh
 ```
 Atau unggah seluruh folder ini ke platform [Overleaf](https://www.overleaf.com/) dengan memilih `main.tex` sebagai *root document*.
+
+
+---
+
+## 📱 Pembaruan Edisi Termux / Android (`ARM64`)
+
+- **Presentasi Seminar KP**: Dilengkapi file [`Laporan_KP_Fahry_Rizky_Samsudin.pptx`](./Laporan_KP_Fahry_Rizky_Samsudin.pptx) dan [`Laporan_KP_Fahry_Rizky_Samsudin_Presentasi.pdf`](./Laporan_KP_Fahry_Rizky_Samsudin_Presentasi.pdf).
+- **[`riwayat-chat/`](./riwayat-chat/README.md)**: Arsip lengkap **5 sesi percakapan** konversi PDF ke LaTeX, perapihan struktur dokumen, dan penyusunan slide presentasi KP.
+- **[`.agents/`](./.agents/)**: Paket lengkap **2.227 AI Agent Skills** dan **4 Rules**.
