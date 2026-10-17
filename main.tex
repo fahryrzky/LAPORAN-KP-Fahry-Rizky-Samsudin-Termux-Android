@@ -1,0 +1,145 @@
+\documentclass[12pt,a4paper]{report}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[tableposition=top]{caption}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+    filecolor=black
+}
+\usepackage[a4paper,top=40mm,bottom=30mm,left=40mm,right=30mm]{geometry}
+
+\setlength{\parindent}{1cm}
+
+\captionsetup[table]{labelsep=period}
+\captionsetup[figure]{labelsep=period}
+
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+
+\renewcommand{\chaptername}{BAB }
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\listtablename}{DAFTAR TABEL}
+\renewcommand{\listfigurename}{DAFTAR GAMBAR}
+\renewcommand{\bibname}{DAFTAR PUSTAKA}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
+\renewcommand{\cftlottitlefont}{\hspace*{\fill}\Large\bfseries}
+\renewcommand{\cftafterlottitle}{\hspace*{\fill}}
+\renewcommand{\cftloftitlefont}{\hspace*{\fill}\Large\bfseries}
+\renewcommand{\cftafterloftitle}{\hspace*{\fill}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+
+\usepackage{sectsty}
+\chapternumberfont{\Large}
+\chaptertitlefont{\Large}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\chapter}[display]
+    {\normalfont\large\bfseries\centering}{\chaptertitlename \thechapter \centering}{-10pt}{\large}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+% --- HALAMAN PRELIMINER ---
+\pagenumbering{roman}
+\input{Header/sampul}
+
+\setstretch{1.5}
+\input{Header/Keaslian}
+\input{Header/persetujuan}
+\input{Header/pengesahan}
+\input{Header/abstrak}
+\input{Header/abstract}
+\input{Header/prakata}
+\input{Header/d_isi}
+\input{Header/d_gambar}
+\input{Header/d_tabel}
+
+% --- NASKAH UTAMA ---
+\newpage
+\pagenumbering{arabic}
+\input{Isi/Bab1_Pendahuluan}
+\input{Isi/Bab2_Profil_Industri}
+\input{Isi/Bab3_Tinjauan_Pustaka}
+\input{Isi/Bab4_Metode_Penelitian}
+\input{Isi/Bab5_Hasil_dan_Pembahasan}
+\input{Isi/Bab6_Kesimpulan_dan_Saran}
+
+% --- DAFTAR PUSTAKA ---
+\newpage
+\bibliographystyle{ieeetr}
+\bibliography{references}
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+
+% --- LAMPIRAN ---
+\newpage
+\input{Isi/Lampiran}
+
+\end{document}

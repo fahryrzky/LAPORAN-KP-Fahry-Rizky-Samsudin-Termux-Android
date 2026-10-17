@@ -1,0 +1,16 @@
+# Security: Protect official signatures and stamps
+
+# Build logs and temp files
+*.aux
+*.log
+*.bbl
+*.blg
+*.toc
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+build_logs/
+output/*.json

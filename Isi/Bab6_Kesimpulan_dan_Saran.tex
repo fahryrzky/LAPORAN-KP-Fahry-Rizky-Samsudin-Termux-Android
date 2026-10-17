@@ -1,0 +1,19 @@
+\chapter{KESIMPULAN DAN SARAN}
+
+\section{Kesimpulan}
+Berdasarkan hasil perancangan, pengujian, dan pembahasan yang telah diuraikan pada bab-bab sebelumnya, kesimpulan dari penelitian ini adalah sebagai berikut:
+\begin{enumerate}[label=\arabic*.]
+    \item Sistem tertanam berbasis Raspberry Pi 5 berhasil dirancang dan diimplementasikan sebagai pusat komputasi tepi (\textit{edge computer}) yang mengintegrasikan kamera web Logitech, \textit{framework} MediaPipe, Python 3.9, serta dua robot manipulator 4-DOF (meArm dan Dobot Magician) secara lokal tanpa bergantung pada komputasi awan. \textit{Pipeline} visi komputer berjalan stabil pada perangkat Raspberry Pi 5 untuk kedua mode operasi.
+    \item Mode pengenalan Sistem Isyarat Bahasa Indonesia (SIBI) pada meArm berhasil mengklasifikasikan 26 abjad dengan akurasi keseluruhan sebesar \textbf{96,73\%} (503 prediksi benar dari 520 percobaan). Model \textit{Deep Neural Networks} (DNN) berbasis 63 fitur koordinat spasial \textit{landmark} tangan mampu mengenali 22 dari 26 kelas abjad dengan akurasi sempurna (100,0\%), dengan galat klasifikasi terbatas pada huruf J, M, N, dan Y akibat kemiripan topologi gestur.
+    \item Mode teleoperasi pada Dobot Magician berhasil memetakan gerak tangan operator ke ruang kerja robot dengan kesesuaian 6 dari 6 arah pemetaan (valid), galat spasial rata-rata sebesar \textbf{1,90 mm}, dan waktu respons rata-rata sebesar \textbf{87,25 ms}. Penerapan filter \textit{exponential smoothing} ($\alpha = 0{,}2$) dan ambang batas gerak 5,0 mm berhasil mengeliminasi getaran mikro (\textit{jitter}) pada motor penggerak robot.
+\end{enumerate}
+
+\section{Saran}
+Saran untuk pengembangan penelitian selanjutnya adalah sebagai berikut:
+\begin{enumerate}[label=\arabic*.]
+    \item Menambah jumlah kelas dan variasi data SIBI dari beberapa pengguna agar sistem lebih tahan terhadap variasi bentuk tangan.
+    \item Menggunakan metode klasifikasi yang lebih kuat, seperti \textit{support vector machine}, \textit{random forest}, atau jaringan saraf ringan yang tetap dapat dijalankan pada Raspberry Pi 5.
+    \item Menambahkan filter temporal pada \textit{landmark} tangan agar gerak robot lebih halus dan tidak bergetar.
+    \item Melakukan kalibrasi ruang kerja yang lebih presisi antara kamera dan Dobot Magician.
+    \item Menambahkan antarmuka pengguna untuk memilih mode, memantau hasil klasifikasi, dan menyimpan data pengujian secara otomatis.
+\end{enumerate}

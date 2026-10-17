@@ -1,0 +1,46 @@
+\chapter{PENDAHULUAN}
+
+\section{Latar Belakang}
+Perkembangan teknologi otomasi dan robotika saat ini telah mendorong transisi sistem manufaktur dan industri menuju era sistem cerdas \cite{craig2018}. Lengan robot manipulator, khususnya dengan kebebasan empat derajat (\textit{4-Degree of Freedom} atau 4-DOF), menjadi salah satu instrumen utama yang banyak diaplikasikan karena kemampuannya dalam melakukan tugas spasial seperti pemindahan barang (\textit{pick and place}), perakitan, dan inspeksi. Namun, antarmuka manusia dan mesin (\textit{Human-Machine Interface}/HMI) yang konvensional umumnya masih bergantung pada perangkat keras mekanis seperti \textit{joystick} atau pemrograman berbasis \textit{pendant}, yang membatasi fleksibilitas dan intuisi operator dalam mengendalikan pergerakan robot secara alami \cite{rautaray2015}.
+
+Seiring dengan pesatnya kemajuan di bidang kecerdasan buatan, visi komputer (\textit{computer vision}) hadir sebagai solusi antarmuka nirsentuh (\textit{contactless}) yang lebih intuitif. Daripada memproses citra piksel mentah yang membebani komputasi, gerakan anggota tubuh manusia dapat diterjemahkan secara efisien melalui ekstraksi fitur geometris persendian (\textit{landmark extraction}) secara \textit{real-time}. Pengimplementasian sistem klasifikasi berbasis titik koordinat ini pada level perangkat keras kini dapat dilakukan menggunakan sistem tertanam (\textit{embedded system}) seperti Raspberry Pi 5. Komputasi tepi (\textit{edge computing}) pada mikrokontroler canggih ini memungkinkan eksekusi inferensi \textit{Deep Neural Networks} (DNN) berbobot ringan secara lokal, sehingga mengurangi latensi dan ketergantungan pada komputer berspesifikasi tinggi, sekaligus menjaga efisiensi daya dan ruang kerja (\textit{workspace}) \cite{shi2016}.
+
+Meskipun demikian, tantangan utama dalam implementasi kendali visual terletak pada perhitungan mekanika terapan dan translasi spasialnya. Data visual dari kamera berwujud piksel 2D atau perkiraan kedalaman 3D, yang harus dikonversi dengan presisi tinggi ke dalam sistem koordinat fisik $(X,Y,Z)$ melalui penyelesaian persamaan kinematika robot \cite{craig2018}. Oleh karena itu, diperlukan pendekatan komputasi yang andal untuk mengelola jenis kendali mekanik yang berbeda, baik itu kendali diskret (berupa perintah spesifik) maupun kendali kontinu (pelacakan gerak dinamis) \cite{lugaresi2019}.
+
+Untuk menjawab tantangan tersebut, penelitian ini merancang sistem kendali visual multi-mode pada manipulator 4-DOF. Pendekatan pertama menggunakan Sistem Isyarat Bahasa Indonesia (SIBI) sebagai kendali instruksional berbasis pengenalan pola abjad, yang diimplementasikan pada purwarupa robot meArm. Pendekatan kedua menggunakan pelacakan gerak tangan (\textit{hand tracking}) MediaPipe untuk teleoperasi, di mana pergeseran \textit{landmark} tangan dipetakan secara kontinu menjadi pergerakan spasial pada robot edukasi industri Dobot Magician. Pengujian terhadap kedua metode ini bertujuan untuk menganalisis respons kinematis dan keandalan sistem tertanam dalam menjalankan fungsi kontrol antar perangkat keras yang berbeda.
+
+Berdasarkan latar belakang tersebut, penelitian ini mengangkat judul \textbf{``Rancang Bangun Sistem Visi Komputer Tertanam Berbasis Raspberry Pi 5 untuk Kendali Robot 4-DOF: Teleoperasi Dobot Magician dan Pengenalan SIBI pada meArm''}. Penelitian ini penting karena menggabungkan sistem tertanam, komputasi tepi, visi komputer, pengenalan SIBI, dan kendali kinematika robot manipulator 4-DOF dalam satu rancangan terpadu. Hasil penelitian diharapkan dapat menjadi dasar pengembangan sistem interaksi manusia--robot yang portabel, edukatif, dan dapat dikembangkan lebih lanjut untuk kebutuhan pembelajaran robotika maupun teknologi bantu komunikasi.
+
+\section{Rumusan Masalah}
+Berdasarkan latar belakang yang telah diuraikan, rumusan masalah dalam penelitian ini adalah sebagai berikut:
+\begin{enumerate}[label=\arabic*.]
+    \item Bagaimana merancang dan mengimplementasikan sistem visi komputer tertanam (\textit{embedded computer vision}) menggunakan Raspberry Pi 5 untuk kendali lengan robot 4-DOF?
+    \item Bagaimana menerjemahkan sistem pengenalan Sistem Isyarat Bahasa Indonesia (SIBI) menjadi sinyal kendali mekanik pada lengan robot meArm?
+    \item Bagaimana memetakan ekstraksi \textit{hand landmark} dari MediaPipe menjadi pergerakan teleoperasi yang kontinu berdasarkan sistem koordinat spasial $(X,Y,Z)$ pada lengan robot Dobot Magician?
+\end{enumerate}
+
+\section{Batasan Masalah}
+Agar penelitian lebih terarah, batasan masalah yang digunakan adalah sebagai berikut:
+\begin{enumerate}[label=\arabic*.]
+    \item Pusat komputasi utama menggunakan mikrokontroler Raspberry Pi 5 yang bertindak sebagai \textit{edge computer}, di mana seluruh pemrosesan algoritma visi komputer dilakukan secara lokal tanpa bergantung pada komputasi awan (\textit{cloud computing}).
+    \item Bahasa pemrograman yang digunakan untuk membangun antarmuka visi komputer dan kalkulasi mekanika adalah Python 3.9.
+    \item Perangkat keras mekanik yang dievaluasi difokuskan pada dua purwarupa lengan robot 4-DOF, yaitu meArm (untuk pengujian mode pengenalan SIBI) dan Dobot Magician (untuk pengujian mode teleoperasi dinamis).
+    \item Pemrosesan visi komputer untuk ekstraksi fitur dan pergerakan tangan difokuskan menggunakan kerangka kerja (\textit{framework}) MediaPipe.
+    \item Algoritma pergerakan lengan robot difokuskan pada penyelesaian persamaan kinematika (\textit{inverse/forward kinematics}) dalam ruang tiga dimensi dengan memetakan titik koordinat proyektil $(X,Y,Z)$.
+\end{enumerate}
+
+\section{Tujuan Penelitian}
+Tujuan penelitian ini adalah sebagai berikut:
+\begin{enumerate}[label=\arabic*.]
+    \item Merancang bangun sistem antarmuka nirsentuh (\textit{contactless}) untuk mengontrol manipulator robot 4-DOF melalui pemanfaatan visi komputer berbasis sistem tertanam Raspberry Pi 5.
+    \item Menguji dan menganalisis tingkat keberhasilan integrasi pengenalan SIBI sebagai metode instruksi kendali diskret pada manipulator meArm.
+    \item Mengimplementasikan dan mengevaluasi respons kinematis Dobot Magician saat dikendalikan secara \textit{real-time} melalui sistem teleoperasi pelacakan tangan (\textit{hand tracking}).
+\end{enumerate}
+
+\section{Manfaat Penelitian}
+Manfaat teoretis dari penelitian ini adalah memberikan gambaran integrasi antara sistem tertanam, visi komputer, dan kendali kinematika robot manipulator. Penelitian ini juga dapat menjadi rujukan awal untuk pengembangan sistem interaksi manusia dan robot berbasis kamera serta komputasi tepi (\textit{edge computing}).
+
+Manfaat praktis dari penelitian ini adalah menyediakan rancangan sistem yang dapat digunakan dalam pembelajaran robotika, demonstrasi kendali robot berbasis gestur, serta pengembangan teknologi bantu berbasis SIBI. Selain itu, penggunaan mikrokontroler Raspberry Pi 5 menjadikan sistem relatif ringkas, hemat daya, dan mudah direplikasi pada laboratorium pendidikan.
+
+\section{Waktu dan Tempat Penelitian}
+Penelitian ini dilaksanakan pada bulan Januari hingga Februari 2026 di Laboratorium Program Studi Teknologi Mekatronika, Politeknik Enjinering Indorama (PEI), Kabupaten Purwakarta, Jawa Barat. Peralatan utama yang digunakan meliputi Raspberry Pi 5 sebagai komputasi tepi, kamera web Logitech, lengan robot Dobot Magician, dan purwarupa meArm 4-DOF.
