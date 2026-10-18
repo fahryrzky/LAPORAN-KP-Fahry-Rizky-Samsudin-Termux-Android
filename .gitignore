@@ -14,3 +14,8 @@
 *.fdb_latexmk
 build_logs/
 output/*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
